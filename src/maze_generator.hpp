@@ -10,8 +10,9 @@ class MazeGenerator {
         std::string name;
 };
 
-class RDFSGenerator : public MazeGenerator {
+// material: https://en.wikipedia.org/wiki/Maze_generation_algorithm
+class RDFSIterativeGenerator : public MazeGenerator {
     public:
-        RDFSGenerator(std::string algo_name);
+        RDFSIterativeGenerator(std::string algo_name);
         void generate(Maze& maze) override;
 };

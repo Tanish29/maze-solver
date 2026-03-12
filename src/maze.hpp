@@ -6,6 +6,7 @@ class Maze {
         Maze(int width, int height);
 
         // getters
+        int getNumCells() const;
         int getWidth() const;
         int getHeight() const;
         bool setCellVisited(int x, int y, bool visited);

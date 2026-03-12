@@ -14,6 +14,10 @@ Maze::Maze(int width, int height) {
 }
 
 // getters
+int Maze::getNumCells() const {
+    return height * width;
+}
+
 int Maze::getWidth() const {
     return width;
 }
