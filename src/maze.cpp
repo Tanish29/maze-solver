@@ -80,3 +80,21 @@ bool Maze::setCellWall(int x, int y, int index, bool hasWall) {
     }
     return true;
 }
+
+bool Maze::removeWall(int x1, int y1, int x2, int y2) {
+    // right or left
+    if (x1 != x2) {
+        if (x1 > x2) {
+            return setCellWall(x1, y1, 3, false);
+        } else {
+            return setCellWall(x1, y1, 1, false);
+        }
+    } else { // top or bottom
+        if (y1 > y2) {
+            return setCellWall(x1, y1, 0, false);
+        } else {
+            return setCellWall(x1, y1, 2, false);
+        }
+    }
+    return false;
+}

@@ -14,6 +14,7 @@ class Maze {
         // setters/writers
         bool setCellStatus(int x, int y, bool visited);
         bool setCellWall(int x, int y, int index, bool hasWall);
+        bool removeWall(int x1, int y1, int x2, int y2);
 
     private:
         struct Cell {
