@@ -30,6 +30,10 @@ bool Maze::getCellStatus(int x, int y) const {
     return maze[y][x].visited;
 }
 
+bool* Maze::getCellWalls(int x, int y) {
+    return maze[y][x].walls;
+}
+
 std::stack<std::pair<int, int>> Maze::getCellNeighbours(int x, int y) const {
     std::stack<std::pair<int, int>> neighbours;
     // top
