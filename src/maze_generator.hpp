@@ -5,6 +5,7 @@
 class MazeGenerator {
     public:
         MazeGenerator(std::string algo_name);
+    protected:
         virtual void generate(Maze& maze) = 0;
     protected:
         std::string name;
