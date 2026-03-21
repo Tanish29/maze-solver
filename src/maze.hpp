@@ -12,7 +12,7 @@ class Maze {
         int getHeight() const;
         bool getCellStatus(int x, int y) const;
         std::stack<std::pair<int, int>> getCellNeighbours(int x, int y) const;
-        bool* getCellWalls(int x, int y);
+        const bool* getCellWalls(int x, int y) const;
         // setters/writers
         bool setCellStatus(int x, int y, bool visited);
         bool setCellWall(int x, int y, int index, bool hasWall);

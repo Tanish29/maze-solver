@@ -30,7 +30,7 @@ bool Maze::getCellStatus(int x, int y) const {
     return maze[y][x].visited;
 }
 
-bool* Maze::getCellWalls(int x, int y) {
+const bool* Maze::getCellWalls(int x, int y) const {
     return maze[y][x].walls;
 }
 
