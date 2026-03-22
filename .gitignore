@@ -1,2 +1,5 @@
 # workspace
 ws/
+
+# cmake build
+build/
