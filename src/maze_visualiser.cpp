@@ -1,5 +1,5 @@
 #include "maze_visualiser.hpp"
-#include <cstdio>
+#include <iostream>
 
 namespace MazeVisualiser {
     void printMaze(const Maze& maze) {
@@ -11,26 +11,26 @@ namespace MazeVisualiser {
             // top walls
             for (int x = 0; x < numCols; x++) {
                 auto walls = maze.getCellWalls(x, y);
-                printf("*");
-                printf(walls[0] ? "---" : "   ");
+                std::cout << "*";
+                std::cout << (walls[0] ? "---" : "   ");
             }
-            printf("*\n"); // end corner
+            std::cout << ("*\n"); // end corner
 
             // left walls
             for (int x = 0; x < numCols; x++) {
                 auto walls = maze.getCellWalls(x, y);
-                printf(walls[3] ? "|" : " ");
-                printf("   "); // cell space
+                std::cout << (walls[3] ? "|" : " ");
+                std::cout << ("   "); // cell space
             }
-            printf("|\n"); // end wall
+            std::cout << ("|\n"); // end wall
         }
 
         // bottom border walls
         for (int x = 0; x < numCols; x++) {
             auto walls = maze.getCellWalls(x, numRows - 1);
-            printf("*");
-            printf(walls[2] ? "---" : "   ");
+            std::cout << ("*");
+            std::cout << (walls[2] ? "---" : "   ");
         }
-        printf("*\n"); // last corner
+        std::cout << ("*\n"); // last corner
     }
 }
