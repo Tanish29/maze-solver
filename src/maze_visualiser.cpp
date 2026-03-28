@@ -11,22 +11,26 @@ namespace MazeVisualiser {
             // top walls
             for (int x = 0; x < numCols; x++) {
                 auto walls = maze.getCellWalls(x, y);
-                printf(walls[0] ? "-" : " ");
+                printf("*");
+                printf(walls[0] ? "---" : "   ");
             }
-            printf("\n");
+            printf("*\n"); // end corner
+
             // left walls
             for (int x = 0; x < numCols; x++) {
                 auto walls = maze.getCellWalls(x, y);
                 printf(walls[3] ? "|" : " ");
+                printf("   "); // cell space
             }
-            printf("|\n");
+            printf("|\n"); // end wall
         }
 
-        // bottom border/walls
+        // bottom border walls
         for (int x = 0; x < numCols; x++) {
             auto walls = maze.getCellWalls(x, numRows - 1);
-            printf(walls[2] ? "-" : " ");
+            printf("*");
+            printf(walls[2] ? "---" : "   ");
         }
-        printf("\n");
+        printf("*\n"); // last corner
     }
 }
