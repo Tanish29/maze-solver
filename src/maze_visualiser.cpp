@@ -6,7 +6,6 @@ namespace MazeVisualiser {
     void printMaze(const Maze& maze) {
         int numRows = maze.getHeight();
         int numCols = maze.getWidth();
-        // auto top_wall_char = "-";
         auto spacing = 3;
         auto top_wall = std::string(spacing, '-');
         auto left_wall = std::string("|");
@@ -18,15 +17,18 @@ namespace MazeVisualiser {
             // top walls
             for (int x = 0; x < numCols; x++) {
                 auto walls = maze.getCellWalls(x, y);
-                std::cout << corner << (walls[0] ? top_wall : cell_space);
+                auto out_char = (walls[0] ? top_wall : cell_space);
+                std::cout << corner
+                          << out_char;
             }
             std::cout << corner << "\n"; // end corner
 
             // left walls
             for (int x = 0; x < numCols; x++) {
                 auto walls = maze.getCellWalls(x, y);
-                std::cout << (walls[3] ? left_wall : " ");
-                std::cout << cell_space; // cell space
+                auto out_char = (walls[3] ? left_wall : " ");
+                std::cout << out_char
+                          << cell_space; // cell space
             }
             std::cout << left_wall << "\n"; // end wall
         }
@@ -34,7 +36,9 @@ namespace MazeVisualiser {
         // bottom border walls
         for (int x = 0; x < numCols; x++) {
             auto walls = maze.getCellWalls(x, numRows - 1);
-            std::cout << corner << (walls[2] ? top_wall : cell_space);
+            auto out_char = (walls[2] ? top_wall : cell_space);
+            std::cout << corner
+                      << out_char;
         }
         std::cout << corner << "\n"; // last corner
     }
