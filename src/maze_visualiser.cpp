@@ -13,12 +13,20 @@ namespace MazeVisualiser {
                 auto walls = maze.getCellWalls(x, y);
                 printf(walls[0] ? "-" : " ");
             }
-            // bottom walls
+            printf("\n");
+            // left walls
             for (int x = 0; x < numCols; x++) {
                 auto walls = maze.getCellWalls(x, y);
                 printf(walls[3] ? "|" : " ");
             }
             printf("|\n");
         }
+
+        // bottom border/walls
+        for (int x = 0; x < numCols; x++) {
+            auto walls = maze.getCellWalls(x, numRows - 1);
+            printf(walls[2] ? "-" : " ");
+        }
+        printf("\n");
     }
 }
