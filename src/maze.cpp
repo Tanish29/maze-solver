@@ -57,7 +57,7 @@ std::stack<std::pair<int, int>> Maze::getCellNeighbours(int x, int y) const {
 
 // setters/writers
 bool Maze::setCellStatus(int x, int y, bool visited) {
-    if ((x < 0 || x > width) || (y < 0 || y > height)) {
+    if ((x < 0 || x >= width) || (y < 0 || y >= height)) {
         return false; // invalid coordinates
     }
     maze[y][x].visited = visited;
@@ -65,21 +65,22 @@ bool Maze::setCellStatus(int x, int y, bool visited) {
 }
 
 bool Maze::setCellWall(int x, int y, int index, bool hasWall) {
-    if ((x < 0 || x > width) || (y < 0 || y > height)) {
+    if ((x < 0 || x >= width) || (y < 0 || y >= height)) {
         return false; // invalid coordinates
     }
     if (index < 0 || index > 3) {
         return false; // invalid index
     }
     maze[y][x].walls[index] = hasWall;
-    // set neighbour cell wall
-    if (index == 0) {
+
+    // set neighbour walls - if exists
+    if (index == 0 && y > 0) {
         maze[y-1][x].walls[2] = hasWall;
-    } else if (index == 1) {
+    } else if (index == 1 && x < width - 1) {
         maze[y][x+1].walls[3] = hasWall;
-    } else if (index == 2) {
+    } else if (index == 2 && y < height - 1) {
         maze[y+1][x].walls[0] = hasWall;
-    } else if (index == 3) {
+    } else if (index == 3 && x > 0) {
         maze[y][x-1].walls[1] = hasWall;
     }
     return true;

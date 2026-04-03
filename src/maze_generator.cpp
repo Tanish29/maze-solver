@@ -1,20 +1,38 @@
 #include "maze_generator.hpp"
+#include <csignal>
 #include <random>
 #include <stack>
+#include <stdexcept>
 
 // MazeGenerator
 MazeGenerator::MazeGenerator(std::string algo_name) : name(algo_name) {}
 
 // RDFSGenerator
+RDFSIterativeGenerator::RDFSIterativeGenerator() : MazeGenerator("RDFS") {
+    // random seed
+    std::random_device rd;
+    this->engine.seed(rd());
+}
+
+RDFSIterativeGenerator::RDFSIterativeGenerator(std::mt19937::result_type seed) : MazeGenerator("RDFS") {
+    this->engine.seed(seed);
+}
+
+unsigned int RDFSIterativeGenerator::uniform_random_generator(int min, int max) {
+    // validate args 
+    if ((min > max) || (min < 0) || (max < 0)) {
+        raise std::invalid_argument("Invalid arguments for uniform_random_generator: min must be <= max and both must be non-negative");
+    }
+    std::uniform_int_distribution<std::mt19937::result_type> dist(min, max);
+    return dist(engine);
+}
+
 void RDFSIterativeGenerator::generate(Maze& maze) {
     int numRows = maze.getHeight();
     int numCols = maze.getWidth();
     // pick a cell randomly
-    std::default_random_engine generator;
-    std::uniform_int_distribution<int> rowDist(0, numRows);
-    std::uniform_int_distribution<int> colDist(0, numCols);
-    int x = rowDist(generator);
-    int y = colDist(generator);
+    int x = uniform_random_generator(0, numCols - 1);
+    int y = uniform_random_generator(0, numRows - 1);
     std::pair<int, int> cc{x,y};
     // mark visited and add to stack
     maze.setCellStatus(x, y, true);
