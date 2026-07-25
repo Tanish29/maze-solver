@@ -4,14 +4,13 @@
 #include <stack>
 #include <stdexcept>
 
-// MazeGenerator
+// ----------------- MazeGenerator -----------------
 MazeGenerator::MazeGenerator(std::string algo_name) : name(algo_name) {}
 
-// RDFSGenerator
+// ----------------- RDFSIterativeGenerator -----------------
 RDFSIterativeGenerator::RDFSIterativeGenerator() : MazeGenerator("RDFS") {
     // random seed
-    std::random_device rd;
-    this->engine.seed(rd());
+    this->engine.seed(std::random_device{}());
 }
 
 RDFSIterativeGenerator::RDFSIterativeGenerator(std::mt19937::result_type seed) : MazeGenerator("RDFS") {
@@ -19,7 +18,7 @@ RDFSIterativeGenerator::RDFSIterativeGenerator(std::mt19937::result_type seed) :
 }
 
 unsigned int RDFSIterativeGenerator::uniform_random_generator(int min, int max) {
-    // validate args 
+    // validate args
     if ((min > max) || (min < 0) || (max < 0)) {
         throw std::invalid_argument("Invalid arguments for uniform_random_generator: min must be <= max and both must be non-negative");
     }
