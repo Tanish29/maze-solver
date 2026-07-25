@@ -21,7 +21,7 @@ RDFSIterativeGenerator::RDFSIterativeGenerator(std::mt19937::result_type seed) :
 unsigned int RDFSIterativeGenerator::uniform_random_generator(int min, int max) {
     // validate args 
     if ((min > max) || (min < 0) || (max < 0)) {
-        raise std::invalid_argument("Invalid arguments for uniform_random_generator: min must be <= max and both must be non-negative");
+        throw std::invalid_argument("Invalid arguments for uniform_random_generator: min must be <= max and both must be non-negative");
     }
     std::uniform_int_distribution<std::mt19937::result_type> dist(min, max);
     return dist(engine);
