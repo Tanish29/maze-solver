@@ -38,7 +38,7 @@ void RDFSIterativeGenerator::generate(Maze& maze) {
     std::stack<std::pair<int, int>> cellStack;
     cellStack.push(cc);
     // neighbour storage
-    std::stack<std::pair<int, int>> neighbours;
+    std::vector<std::pair<int, int>> neighbours;
     std::pair<int, int> neighbour;
     // while stack is not empty
     while (!cellStack.empty()) {
@@ -48,12 +48,12 @@ void RDFSIterativeGenerator::generate(Maze& maze) {
         // get all neighbours
         neighbours = maze.getAdjacentNeighbours(cc.first, cc.second);
         while (!neighbours.empty()) {
-            neighbour = neighbours.top();
+            neighbour = neighbours.back();
             // check if visited
             if (!maze.getCellStatus(neighbour.first, neighbour.second)) {
                 break;
             } else {
-                neighbours.pop();
+                neighbours.pop_back();
             }
         }
         // if cell has unvisited neighbours
@@ -61,7 +61,7 @@ void RDFSIterativeGenerator::generate(Maze& maze) {
             // add current cell to stack
             cellStack.push(cc);
             // pick an unvisited neighbour randomly
-            neighbour = neighbours.top();
+            neighbour = neighbours.back();
             // remove wall between cell and neighbour
             maze.removeWall(cc.first, cc.second, neighbour.first, neighbour.second);
             // mark neighbour visited and add to stack

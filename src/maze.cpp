@@ -34,23 +34,23 @@ const bool* Maze::getCellWalls(int x, int y) const {
     return maze[y][x].walls;
 }
 
-std::stack<std::pair<int, int>> Maze::getAdjacentNeighbours(int x, int y) const {
-    std::stack<std::pair<int, int>> neighbours;
+std::vector<std::pair<int, int>> Maze::getAdjacentNeighbours(int x, int y) const {
+    std::vector<std::pair<int, int>> neighbours;
     // top
     if (y > 0) {
-        neighbours.push({x, y-1});
+        neighbours.push_back({x, y-1});
     }
     // right
     if (x < width - 1) {
-        neighbours.push({x+1, y});
+        neighbours.push_back({x+1, y});
     }
     // bottom
     if (y < height - 1) {
-        neighbours.push({x, y+1});
+        neighbours.push_back({x, y+1});
     }
     // left
     if (x > 0) {
-        neighbours.push({x-1, y});
+        neighbours.push_back({x-1, y});
     }
     return neighbours;
 }

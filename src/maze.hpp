@@ -15,7 +15,11 @@ class Maze {
             Returns cells adjacent to a given cell
             Does not consider walls for the adjacent cells
         */
-        std::stack<std::pair<int, int>> getAdjacentNeighbours(int x, int y) const;
+        std::vector<std::pair<int, int>> getAdjacentNeighbours(int x, int y) const;
+        /*
+            Returns cells adjacent to a given cell and has no wall in-between
+            Considers the walls for the adjacent cells
+        */
         const bool* getCellWalls(int x, int y) const;
         // setters/writers
         bool setCellStatus(int x, int y, bool visited);
