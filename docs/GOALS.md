@@ -9,7 +9,7 @@
 ## Requirements
 - [ ] Maze generation
 - [ ] Maze input parsing
-- [ ] Dijkstra implementation
+- [ ] Pathfinding Algorithm implementation
 - [ ] Benchmarking (time, nodes visited)
 - [ ] Visualization
 - [ ] Display results comparison

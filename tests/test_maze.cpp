@@ -39,7 +39,7 @@ TEST_CASE("Cell neighbours for center and corner cells", "[maze][neighbours]") {
     Maze m(3, 3);
 
     SECTION("Center cell has 4 neighbours") {
-        auto stack = m.getCellNeighbours(1, 1);
+        auto stack = m.getAdjacentNeighbours(1, 1);
         auto neighbours = stackToVector(stack);
         REQUIRE(neighbours.size() == 4);
         // expected neighbours (not order-dependent in this test)
@@ -52,7 +52,7 @@ TEST_CASE("Cell neighbours for center and corner cells", "[maze][neighbours]") {
     }
 
     SECTION("Top-left corner has 2 neighbours (right and bottom)") {
-        auto stack = m.getCellNeighbours(0, 0);
+        auto stack = m.getAdjacentNeighbours(0, 0);
         auto neighbours = stackToVector(stack);
         REQUIRE(neighbours.size() == 2);
         REQUIRE(std::find(neighbours.begin(), neighbours.end(), std::pair<int,int>{1,0}) != neighbours.end());

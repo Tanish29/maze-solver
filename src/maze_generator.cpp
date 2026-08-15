@@ -45,8 +45,8 @@ void RDFSIterativeGenerator::generate(Maze& maze) {
         // get current cell from stack
         cc = cellStack.top();
         cellStack.pop();
-        // get neighbours
-        neighbours = maze.getCellNeighbours(cc.first, cc.second);
+        // get all neighbours
+        neighbours = maze.getAdjacentNeighbours(cc.first, cc.second);
         while (!neighbours.empty()) {
             neighbour = neighbours.top();
             // check if visited

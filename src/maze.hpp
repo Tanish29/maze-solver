@@ -11,7 +11,11 @@ class Maze {
         int getWidth() const;
         int getHeight() const;
         bool getCellStatus(int x, int y) const;
-        std::stack<std::pair<int, int>> getCellNeighbours(int x, int y) const;
+        /*
+            Returns cells adjacent to a given cell
+            Does not consider walls for the adjacent cells
+        */
+        std::stack<std::pair<int, int>> getAdjacentNeighbours(int x, int y) const;
         const bool* getCellWalls(int x, int y) const;
         // setters/writers
         bool setCellStatus(int x, int y, bool visited);
